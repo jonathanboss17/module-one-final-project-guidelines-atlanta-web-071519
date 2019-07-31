@@ -41,9 +41,10 @@ def main_menu(user)
         puts "Please choose from the following menu: \n
         1. Create a new itinerary.
         2. View your current itineraries.
-        3. Change an itinerary."
-        x = gets.chomp
-        next_step(user, x.to_i)
+        3. Change an itinerary.
+        4. Delete an itinerary."
+        x = gets.chomp.to_i
+        next_step(user, x)
     else 
         bye_bye
     end
@@ -53,7 +54,7 @@ end
 def next_step(user, num)
     if ![1,2,3,4].include?(num)
         puts "That number is invalid.  Please enter a valid number."
-        x = gets.chomp
+        x = gets.chomp.to_i
         next_step(user, x)
     end 
 
@@ -64,7 +65,10 @@ def next_step(user, num)
         view_current_itineraries(user)
     end 
     if(num == 3)
-        update(user)
+        change_itinerary_prompt(user)
+    end
+    if(num == 4)
+        delete_itinerary_prompt(user)
     end
 
 end
@@ -78,7 +82,4 @@ def render
 
 end
 
-# def re_render
-#     num = main_menu 
-#     next_step(user, num.to_i)
-# end
+
