@@ -26,7 +26,13 @@ def change_itinerary
 end
 
 def update(user)
-    puts user.itinerary_lists.each
+    user.itinerary_lists.each do |x|
+        if(x.itinerary != nil)
+            puts x.id.to_s + ". " +  x.itinerary
+        else
+            puts x.id.to_s + ". Empty."
+        end
+    end
     puts "Which itinerary would you like to update?"
 end
  

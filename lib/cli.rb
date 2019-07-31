@@ -51,18 +51,22 @@ def main_menu(user)
 end
 
 def next_step(user, num)
-    unless [1,2,3,4].include?(num)
-        "That number is invalid.  Please enter a valid number."
+    if ![1,2,3,4].include?(num)
+        puts "That number is invalid.  Please enter a valid number."
+        x = gets.chomp
+        next_step(user, x)
+    end 
 
-    elsif(num == 1)
+    if(num == 1)
         create_itinerary(user)
-    
-    elsif(num == 2)
+    end
+    if(num == 2)
         view_current_itineraries(user)
-    
-    elsif(num == 3)
+    end 
+    if(num == 3)
         update(user)
     end
+
 end
 
 
