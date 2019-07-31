@@ -1,11 +1,10 @@
 def login
     puts "Please enter your username:"
     x = gets.chomp
-
-    if(User.find_by(username: x) == nil)
-        puts "Username does not exist.  Would you like to create an account?
-        1. yes
-        2. no"
+    if (User.find_by(username:x))
+        User.find_by(username: x)
+    else 
+        puts "Username does not exist.  Would you like to create an account? \n\n yes/no"
 
         if (gets.chomp == "yes")
             create_account
@@ -14,8 +13,7 @@ def login
         end
 
     end
-
-    main_menu
+    
 end
 
 def create_account
@@ -24,8 +22,8 @@ def create_account
     new_user = User.create(username: new_username)
     if new_user
         puts "Your account was successfully created!"
-        sleep 1  
-        main_menu
+        # sleep 1  
+        # main_menu
     end 
     new_user
 end
@@ -36,28 +34,47 @@ def bye_bye
     exit 
 end
 
-def main_menu
-    puts "Would you like to go to the main menu?
-    1. yes
-    2. no"
+def main_menu(user)
+    puts "Would you like to go to the main menu? \n\n yes/no"
 
     if(gets.chomp == "yes")
-        puts "Please choose from the following menu:
+        puts "Please choose from the following menu: \n
         1. Create a new itinerary.
         2. View your current itineraries.
         3. Change an itinerary."
-        # getting the number and doing shit with it
+        x = gets.chomp
+        next_step(user, x.to_i)
     else 
         bye_bye
     end
 
 end
 
-def next_step
+def next_step(user, num)
+    unless [1,2,3,4].include?(num)
+        "That number is invalid.  Please enter a valid number."
+
+    elsif(num == 1)
+        create_itinerary(user)
+    
+    elsif(num == 2)
+        view_current_itineraries(user)
+    
+    elsif(num == 3)
+        update(user)
+    end
 end
 
 
 
 def render
-    login
+    user = login
+    main_menu(user)
+    # next_step(user, num.to_i)
+
 end
+
+# def re_render
+#     num = main_menu 
+#     next_step(user, num.to_i)
+# end
