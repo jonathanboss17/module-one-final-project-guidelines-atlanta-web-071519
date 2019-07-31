@@ -1,4 +1,5 @@
 def create_itinerary(user)
+    #before creating new itinerary, the user needs to be prompted for a destination to associate with the itinerary
     itinerary_new= ItineraryList.create(itinerary: fill_itinerary)
     user.itinerary_lists << itinerary_new 
 
@@ -9,6 +10,7 @@ def create_itinerary(user)
 
 
 end
+
 
 def fill_itinerary
     puts "Fill your itinerary: "
@@ -62,13 +64,14 @@ end
 def delete_itinerary(user)
     itinerary_num = gets.chomp.to_i
     i = 1
+    binding.pry
     user.itinerary_lists.each do |x|
         if(itinerary_num == i)
-            ItineraryList.delete(x.id)
-            x.save
+            x.delete
         end
         i += 1
     end
+    
     puts "Thanks. We've deleted that itinerary.\n\n" 
     main_menu(user)
 end
@@ -85,7 +88,7 @@ def delete_itinerary_prompt(user)
         end
         i += 1
     end
-    
+    binding.pry
     delete_itinerary(user)
 end
 

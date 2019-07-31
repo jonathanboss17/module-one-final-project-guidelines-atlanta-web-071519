@@ -29,7 +29,7 @@ def create_account
 end
 
 def bye_bye 
-    puts "Ok. No problem! Thanks for using Daydream!"
+    puts "Ok. Thanks for using Daydream!"
     sleep 2
     exit 
 end
