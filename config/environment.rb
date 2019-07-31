@@ -1,3 +1,5 @@
+ActiveRecord::Base.logger = nil
+
 require 'bundler'
 Bundler.require
 
