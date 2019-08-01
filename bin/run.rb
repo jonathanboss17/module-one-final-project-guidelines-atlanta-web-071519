@@ -12,7 +12,6 @@ require "pastel"
 #-------WELCOME--------#
 def welcome 
     puts @pastel.yellow(@font.write("Welcome to Daydream!"))
-    sleep 1
     login 
     main_menu
 end 
@@ -21,13 +20,17 @@ end
 def get_username
     puts "Please enter a username: \n\n"
     @name = gets.chomp
+    until @name != ''
+        puts @pastel.red("Username is required to use the app. Please enter a username:")
+        @name = gets.chomp 
+    end
 end
 
 def login 
     get_username
     if (User.find_by(username: @name))
         @user = User.find_by(username: @name)
-        puts "\n\nWelcome back, #{@name}!!\n\n"
+        puts @pastel.yellow("\n\nWelcome back, #{@name}!!\n\n")
     else 
         create_account_prompt
     end
@@ -104,19 +107,22 @@ end
 def main_menu_triage(n)
     if (n == 1)
         create_itinerary
-    elsif (n == 2)
+    elsif (n == 2 && !users_itineraries.empty?)
         view_itineraries 
-    elsif (n == 3)
+    elsif (n == 3 && !users_itineraries.empty?)
         edit_itinerary
-    elsif (n == 4)
+    elsif (n == 4 && !users_itineraries.empty?)
         delete_itinerary 
-    elsif (n == 5)
+    elsif (n == 5 && !users_itineraries.empty?)
         view_destinations
     elsif (n == 6)
-        #about function
-    else 
+        about 
+    elsif(n==7) 
         bye_bye
-    end 
+    else
+        puts "\n\nYou currently have no itineraries.\n\n"
+        main_menu_prompt
+    end
 end
 
 #---------OPTION 1: CREATE ITINERARY------#
@@ -146,7 +152,7 @@ def itinerary_confirm_edit
         itinerary_confirm
         itinerary_confirm_edit
     else  
-        main_menu
+        main_menu_prompt
     end 
 end
 
@@ -171,8 +177,9 @@ end
 def view_itineraries 
     puts "Here are your current itineraries:\n\n"
     list_itineraries
+    puts "\n\n"
     sleep 1
-    main_menu
+    main_menu_prompt
 end
 
 def users_itineraries
@@ -204,7 +211,7 @@ def edit_itinerary
     get_new_text 
     change_itinerary_text
     edit_confirm 
-    main_menu 
+    main_menu_prompt
 end
 
 def itinerary_select
@@ -244,7 +251,7 @@ def delete_itinerary
         i += 1
     end 
     delete_confirm
-    main_menu
+    main_menu_prompt
 end
 
 def delete_confirm
@@ -258,13 +265,22 @@ def view_destinations
     list_destinations
     puts "\n\n"
     sleep 1
-    main_menu
+    main_menu_prompt
 end
 
 def list_destinations
-    @user.itinerary_lists.each {|i| puts i.destination.city + ", " + i.destination.state_or_country}
+    users_itineraries.each {|i| puts i.destination.city + ", " + i.destination.state_or_country}
 end
 
+#---------ABOUT DAYDREAM----------#
+
+def about
+   puts @pastel.yellow("\n\nDaydream is an app that let's you do just that.  Envision yourself somewhere new. All you have to do is create an account!")
+   puts @pastel.yellow("Once you have an account, you can create and modify itineraries...") 
+   puts @pastel.yellow("or if you don't feel like all that, just type in some notes about your dream destination!\n\n")
+    sleep 4
+    main_menu_prompt
+end
 
 #---------EXIT PROGRAM------------# 
 
