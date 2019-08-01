@@ -1,4 +1,4 @@
-class ItineraryList < ActiveRecord::Base 
+class Jot < ActiveRecord::Base 
     belongs_to :user
     belongs_to :destination
 end 

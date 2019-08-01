@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 3) do
     t.string "state_or_country"
   end
 
-  create_table "itinerary_lists", force: :cascade do |t|
-    t.text    "itinerary"
+  create_table "jots", force: :cascade do |t|
+    t.text    "jot"
     t.integer "user_id"
     t.integer "destination_id"
   end

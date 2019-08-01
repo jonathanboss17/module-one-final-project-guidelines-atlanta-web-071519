@@ -1,4 +1,4 @@
 class User < ActiveRecord::Base 
-    has_many :itinerary_lists
-    has_many :destinations, through: :itinerary_lists
+    has_many :jots
+    has_many :destinations, through: :jots
 end
