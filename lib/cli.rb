@@ -8,7 +8,7 @@ class CLI
 
     #-------WELCOME--------#
     def welcome 
-        puts @pastel.yellow(@font.write("Welcome to Daydream!"))
+        puts @pastel.yellow(@font.write("Welcome to DreamJot!"))
         login 
         main_menu
     end 
@@ -50,7 +50,7 @@ class CLI
         add_bio
         # new_user 
         if new_user
-            @prompt.ok("Your account was successfully created! \n\nYour new Daydream username is #{@name}.\n\n")
+            @prompt.ok("Your account was successfully created! \n\nYour new DreamJot username is #{@name}.\n\n")
             sleep 1
             main_menu_prompt
         else
@@ -94,7 +94,7 @@ class CLI
             menu.choice 'Change a jot.', 3
             menu.choice 'Delete a jot.', 4
             menu.choice 'View your current destinations.', 5
-            menu.choice 'About Daydream.', 6
+            menu.choice 'About DreamJot.', 6
             menu.choice 'Exit.', 7
         }
         main_menu_triage(choice)
@@ -126,7 +126,6 @@ class CLI
 
     def create_jot
         destination_new = get_destination
-        # itinerary_new = ItineraryList.create(itinerary: fill_itinerary, destination_id: destination_new.id, user_id:@user.id)
         new_jot = Jot.create(jot: fill_jot, destination_id: destination_new.id, user_id:@user.id)
         jot_confirm
         jot_confirm_edit
@@ -169,7 +168,7 @@ class CLI
         gets.chomp
     end
 
-    #---------OPTION 2: VIEW ITINERARIES-------#
+    #---------OPTION 2: VIEW JOTS-------#
 
     def view_jots
         puts "Here are your current jots:\n\n"
@@ -195,7 +194,7 @@ class CLI
         } 
     end
 
-    #---------OPTION 3: EDIT ITINERARY---------#
+    #---------OPTION 3: EDIT JOTS---------#
 
     def edit_jot
         jot_select
@@ -231,7 +230,7 @@ class CLI
         puts "Thanks. We've updated your jot.\n\n" 
     end
 
-    #---------OPTION 4: DELETE ITINERARY--------#
+    #---------OPTION 4: DELETE JOTS--------#
 
     def delete_jot 
         jot_select
@@ -264,10 +263,10 @@ class CLI
         users_jots.each {|i| puts i.destination.city + ", " + i.destination.state_or_country}
     end
 
-    #---------ABOUT DAYDREAM----------#
+    #---------ABOUT DREAMJOT----------#
 
     def about
-    puts @pastel.yellow("\n\nDaydream is an app that let's you do just that.  Envision yourself somewhere new. All you have to do is create an account!")
+    puts @pastel.yellow("\n\nDreamJot is an app that let's you do just that.  Envision yourself somewhere new. All you have to do is create an account!")
     puts @pastel.yellow("Once you have an account, you can create and modify jots...") 
     puts @pastel.yellow("or if you don't feel like all that, just type in some notes about your dream destination!\n\n")
         sleep 4
@@ -277,7 +276,7 @@ class CLI
     #---------EXIT PROGRAM------------# 
 
     def bye_bye 
-        puts "\n\n\nThanks for using Daydream! Goodbye!\n\n\n"
+        puts "\n\n\nThanks for using DreamJot! Goodbye!\n\n\n"
         sleep 1
         exit 
     end
