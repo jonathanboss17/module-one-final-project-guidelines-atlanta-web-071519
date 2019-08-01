@@ -6,5 +6,6 @@ gem "sqlite3"
 gem "pry"
 gem "require_all"
 
-gem 'pastel', '~> 0.7.3'
-gem 'tty-prompt', '~> 0.19.0'
+gem 'pastel'
+gem 'tty-prompt'
+gem 'tty-font'
