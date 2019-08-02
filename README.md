@@ -1,59 +1,49 @@
-# Module One Final Project Guidelines
+#README.md
 
-Congratulations, you're at the end of module one! You've worked crazy hard to get here and have learned a ton.
+#####  What is DreamJot?  
 
-For your final project, we'll be building a Command Line database application.
+The purpose of DreamJot is to provide the user a convenient and organized location to store places that they want to visit as well as things they might want to do when they’re there.   Users can then return to the app to pull all of their dreamed-of destinations. 
 
-## Project Requirements
+##### Instructions for using the app
 
-### Option One - Data Analytics Project
+A user can launch the app by cloning or downloading the program files and executing `ruby bin/run.rb` from inside the project directory.  Upon launching the app, the user will be asked for their username.  After logging in, the user can go to the main menu to interact with their jots.  
 
-1. Access a Sqlite3 Database using ActiveRecord.
-2. You should have at minimum three models including one join model. This means you must have a many-to-many relationship.
-3. You should seed your database using data that you collect either from a CSV, a website by scraping, or an API.
-4. Your models should have methods that answer interesting questions about the data. For example, if you've collected info about movie reviews, what is the most popular movie? What movie has the most reviews?
-5. You should provide a CLI to display the return values of your interesting methods.  
-6. Use good OO design patterns. You should have separate classes for your models and CLI interface.
+If a user does not have a username yet, they will be prompted to create one.  After which, they have the choice to go back to the main menu to begin creating jots.  
 
-  **Resource:** [Easy Access APIs](https://github.com/learn-co-curriculum/easy-access-apis)
+Once at the main menu, a user can create, edit, or delete jots, and view all destinations associated with their jots.  The user also has the option to view information about DreamJot or to simply exit the application.  
 
-### Option Two - Command Line CRUD App
+###### Creating jots 
 
-1. Access a Sqlite3 Database using ActiveRecord.
-2. You should have a minimum of three models.
-3. You should build out a CLI to give your user full CRUD ability for at least one of your resources. For example, build out a command line To-Do list. A user should be able to create a new to-do, see all todos, update a todo item, and delete a todo. Todos can be grouped into categories, so that a to-do has many categories and categories have many to-dos.
-4. Use good OO design patterns. You should have separate models for your runner and CLI interface.
+To create a jot, simply enter the number (1) associated with the ‘Jot something’ option, upon which a series of prompts will guide you through the process. The user will first be asked to enter a city, then  state (or country). Next, the user will be asked to create their jot or, in other words, ‘jot something down.’ After the jot has been created, the user will then be asked to either return to the main menu, or exit the app. 
 
-### Brainstorming and Proposing a Project Idea
+###### Viewing current jots 
 
-Projects need to be approved prior to launching into them, so take some time to brainstorm project options that will fulfill the requirements above.  You must have a minimum of four [user stories](https://en.wikipedia.org/wiki/User_story) to help explain how a user will interact with your app.  A user story should follow the general structure of `"As a <role>, I want <goal/desire> so that <benefit>"`. In example, if we were creating an app to randomly choose nearby restaurants on Yelp, we might write:
+Selecting “View current jots” will return to the user all the currently saved destinations.  
 
-* As a user, I want to be able to enter my name to retrieve my records
-* As a user, I want to enter a location and be given a random nearby restaurant suggestion
-* As a user, I should be able to reject a suggestion and not see that restaurant suggestion again
-* As a user, I want to be able to save to and retrieve a list of favorite restaurant suggestions
+###### Editing a jot
 
-## Instructions
+Editing a jot is easy.  The user again will be guided through prompts asking what they want the jot to say.  After they’re done, the user will receive a message with the requested changes and asking whether they want to make changes.  If a user wants to make changes, they can choose to do so, or they can back to main menu.  
 
-1. Fork and clone this repository.
-2. Build your application. Make sure to commit early and commit often. Commit messages should be meaningful (clearly describe what you're doing in the commit) and accurate (there should be nothing in the commit that doesn't match the description in the commit message). Good rule of thumb is to commit every 3-7 mins of actual coding time. Most of your commits should have under 15 lines of code and a 2 line commit is perfectly acceptable.
-3. Make sure to create a good README.md with a short description, install instructions, a contributors guide and a link to the license for your code.
-4. Make sure your project checks off each of the above requirements.
-5. Prepare a video demo (narration helps!) describing how a user would interact with your working project.
-    * The video should:
-      - Have an overview of your project.(2 minutes max)
-6. Prepare a presentation to follow your video.(3 minutes max)
-    * Your presentation should:
-      - Describe something you struggled to build, and show us how you ultimately implemented it in your code.
-      - Discuss 3 things you learned in the process of working on this project.
-      - Address, if anything, what you would change or add to what you have today?
-      - Present any code you would like to highlight.   
-7. *OPTIONAL, BUT RECOMMENDED*: Write a blog post about the project and process.
+###### Deleting jots
 
----
-### Common Questions:
-- How do I turn off my SQL logger?
-```ruby
-# in config/environment.rb add this line:
-ActiveRecord::Base.logger = nil
-```
+When a user opts to delete a jot, they will receive a list of all of their jots.  They can then select the jot they wish to delete.  After the jot is successfully deleted, the user can return to the main menu or exit the app.   
+
+###### Viewing current destinations 
+
+Selecting “View your current destinations” will return to the user all the currently saved destinations.  
+
+###### About DreamJot
+
+Users can select this option to read more about the application. 
+
+###### Quitting the application 
+
+To quit the application, all the user needs to do is select  “Exit”.  
+
+##### Libraries Used
+
+DreamJot makes use of Ruby gems for some of its styling, including tty-prompt, tty-font, and pastel.  These gems were created by Piotr Murach and are made freely available for use under the MIT License available at [The MIT License | Open Source Initiative](https://opensource.org/licenses/MIT).  
+
+##### End-User License Agreement
+
+[Creative Commons — Attribution 4.0 International — CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)

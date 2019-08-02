@@ -159,12 +159,12 @@ class CLI
     end
 
     def dest_state_or_country
-        puts "Please provide the state or country (if outside the US):"
+        puts "Please provide a state or country (if outside the US):"
         gets.chomp  
     end
 
     def dest_city
-        puts "Please provide the city for your trip:"
+        puts "Please provide a city:"
         gets.chomp
     end
 
