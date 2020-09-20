@@ -31,7 +31,6 @@ class CLI
         else 
             create_account_prompt
         end
-        #@name 
     end
 
     def create_account_prompt
